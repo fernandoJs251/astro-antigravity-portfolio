@@ -1,0 +1,220 @@
+---
+// Sección de Habilidades Técnicas con Iconos y Efectos Hover Suaves
+interface Skill {
+  name: string;
+  category: string;
+  iconType: string;
+  color: string;
+  borderGlow: string;
+}
+
+const skills: Skill[] = [
+  // Lenguajes
+  { name: 'Python', category: 'Lenguaje / Backend', iconType: 'python', color: '#38bdf8', borderGlow: 'rgba(56, 189, 248, 0.35)' },
+  { name: 'TypeScript', category: 'Lenguaje Tipado', iconType: 'typescript', color: '#818cf8', borderGlow: 'rgba(129, 140, 248, 0.35)' },
+  { name: 'JavaScript (ES6+)', category: 'Lenguaje Web', iconType: 'javascript', color: '#facc15', borderGlow: 'rgba(250, 204, 21, 0.35)' },
+  { name: 'C / C++', category: 'Sistemas & POSIX', iconType: 'cpp', color: '#93c5fd', borderGlow: 'rgba(147, 197, 253, 0.35)' },
+  { name: 'SQL', category: 'Consultas & DB', iconType: 'sql', color: '#67e8f9', borderGlow: 'rgba(103, 232, 249, 0.35)' },
+  
+  // Frontend & 3D
+  { name: 'React', category: 'Frontend Framework', iconType: 'react', color: '#38bdf8', borderGlow: 'rgba(56, 189, 248, 0.35)' },
+  { name: 'Astro', category: 'Modern Web Engine', iconType: 'astro', color: '#fb923c', borderGlow: 'rgba(251, 146, 60, 0.35)' },
+  { name: 'Three.js / WebGL', category: 'Gráficos 3D & Shaders', iconType: 'threejs', color: '#E8F982', borderGlow: 'rgba(232, 249, 130, 0.35)' },
+  { name: 'Tailwind & Modern CSS', category: 'Estilos & UI', iconType: 'tailwind', color: '#38bdf8', borderGlow: 'rgba(56, 189, 248, 0.35)' },
+
+  // Backend & Datos
+  { name: 'Node.js', category: 'Runtime Backend', iconType: 'nodejs', color: '#4ade80', borderGlow: 'rgba(74, 222, 128, 0.35)' },
+  { name: 'PostgreSQL & MySQL', category: 'Bases de Datos RDBMS', iconType: 'database', color: '#a5b4fc', borderGlow: 'rgba(165, 180, 252, 0.35)' },
+  
+  // Herramientas & Arquitectura
+  { name: 'Git & GitHub', category: 'Control de Versiones', iconType: 'git', color: '#f87171', borderGlow: 'rgba(248, 113, 113, 0.35)' },
+  { name: 'Linux POSIX', category: 'Entornos de SO & Shell', iconType: 'linux', color: '#fbbf24', borderGlow: 'rgba(251, 191, 36, 0.35)' },
+  { name: 'Clean Architecture', category: 'Patrones GoF & SOLID', iconType: 'architecture', color: '#c084fc', borderGlow: 'rgba(192, 132, 252, 0.35)' }
+];
+---
+
+<section id="habilidades" class="section-padding skills-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="skill-sparkle">⚡</span>
+        <span>Stack Tecnológico</span>
+      </div>
+      <h2 class="section-title">
+        Habilidades & <span class="gradient-text">Herramientas</span>
+      </h2>
+      <p class="section-subtitle">
+        Tecnologías y lenguajes aplicados en proyectos de software, arquitectura de sistemas y entornos universitarios.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      {skills.map((skill) => (
+        <div 
+          class="skill-card glass-panel" 
+          style={`--skill-glow: ${skill.borderGlow}; --skill-color: ${skill.color};`}
+        >
+          <!-- Skill Icon Container -->
+          <div class="skill-icon-wrap" style={`color: ${skill.color}; background: ${skill.color}15; border-color: ${skill.color}35;`}>
+            {skill.iconType === 'python' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.91 0c-3.14 0-5.02 1.34-5.02 3.49v2.55h5.02v.85H4.8c-2.31 0-4.3 1.39-4.3 4.25 0 2.87 1.77 4.25 4.3 4.25h1.7v-2.12c0-2.39 1.86-4.25 4.25-4.25h5.1V6.8c0-2.34-1.92-3.8-4.25-3.8h-1.7V0h1.71zm-2.13 1.7c.47 0 .85.38.85.85s-.38.85-.85.85-.85-.38-.85-.85.38-.85.85-.85zm7.42 6.8c-2.31 0-4.25 1.86-4.25 4.25v2.12h-5.1v2.13c0 2.33 1.91 3.8 4.25 3.8h1.7v3c3.14 0 5.02-1.34 5.02-3.49v-2.55h-5.02v-.85h7.11c2.31 0 4.3-1.39 4.3-4.25 0-2.87-1.77-4.25-4.3-4.25h-1.71v2.12c0 2.39-1.86 4.25-4.25 4.25h-5.1v-2.12c0-2.34 1.92-3.8 4.25-3.8h1.7v-3h-1.71zm2.13 13.6c-.47 0-.85-.38-.85-.85s.38-.85.85-.85.85.38.85.85-.38.85-.85.85z"/>
+              </svg>
+            )}
+            {skill.iconType === 'typescript' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.74 13.9v-1.63H8.38V20H6.25V7.47h8.12v4.8H12.24zm8.68-1.5c-.32-.48-.84-.96-1.57-1.44-.72-.48-1.25-.89-1.58-1.23-.33-.34-.5-.73-.5-1.17 0-.48.2-.87.59-1.18.39-.31.9-.46 1.53-.46.68 0 1.25.17 1.7.5.46.34.78.85.96 1.54l1.9-.8c-.34-1.07-.94-1.88-1.8-2.43-.87-.55-1.92-.83-3.15-.83-1.35 0-2.45.37-3.3 1.1-.85.74-1.27 1.7-1.27 2.9 0 .8.2 1.48.6 2.05.4.57 1.01 1.11 1.83 1.63.6.38 1.07.72 1.4.99.33.28.56.57.7.87.13.3.2.65.2 1.05 0 .6-.24 1.08-.73 1.44-.48.36-1.12.54-1.92.54-.84 0-1.57-.23-2.18-.68-.62-.45-1.03-1.13-1.23-2.04l-2.02.7c.37 1.34 1.08 2.37 2.13 3.08 1.05.71 2.34 1.07 3.86 1.07 1.5 0 2.72-.4 3.66-1.18.94-.79 1.41-1.84 1.41-3.15 0-.82-.23-1.54-.68-2.15z"/>
+              </svg>
+            )}
+            {skill.iconType === 'javascript' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.621-1.797-1.025-.114-.188-.108-.431.029-.623.18-.255.617-.417 1.155-.371.603.053 1.054.341 1.359.832.186.302.302.476.302.476l1.797-1.144s-.299-.544-.648-.962c-.792-.953-1.89-1.399-3.23-1.31-1.042.068-1.93.585-2.383 1.39-.629 1.118-.328 2.656.702 3.328 1.258.82 2.766.974 3.033 1.63.15.367.042.791-.328 1.018-.553.339-1.464.288-2.083-.178-.445-.335-.694-.761-.694-.761l-1.832 1.111s.344.757.876 1.285c1.037 1.028 2.502 1.248 3.738.903 1.341-.375 2.148-1.42 2.368-2.766zm-9.351-7.143v7.354c0 1.705-.989 2.513-2.617 2.513-.771 0-1.385-.145-1.802-.379l.394-1.636c.328.169.75.298 1.242.298.799 0 1.27-.373 1.27-1.29v-6.86h1.513z"/>
+              </svg>
+            )}
+            {skill.iconType === 'cpp' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.395 14.398l-7.2-12.47a2.766 2.766 0 0 0-4.79 0l-7.2 12.47a2.766 2.766 0 0 0 2.395 4.148h14.4a2.766 2.766 0 0 0 2.395-4.148zM12 5.5l5.5 9.5H6.5L12 5.5z"/>
+              </svg>
+            )}
+            {skill.iconType === 'react' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(0 12 12)"></ellipse>
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"></ellipse>
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"></ellipse>
+                <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+              </svg>
+            )}
+            {skill.iconType === 'astro' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L4 18h4l2-5h4l2 5h4L12 2z"></path>
+                <path d="M11 11l1-2 1 2z"></path>
+              </svg>
+            )}
+            {skill.iconType === 'threejs' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            )}
+            {skill.iconType === 'nodejs' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z"></path>
+                <path d="M12 12l9-5.5"></path>
+                <path d="M12 12v10"></path>
+                <path d="M12 12L3 6.5"></path>
+              </svg>
+            )}
+            {skill.iconType === 'database' || skill.iconType === 'sql' ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            ) : null}
+            {skill.iconType === 'tailwind' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+              </svg>
+            )}
+            {skill.iconType === 'git' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="18" r="3"></circle>
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="18" cy="6" r="3"></circle>
+                <line x1="6" y1="9" x2="6" y2="21"></line>
+                <path d="M9 9a9 9 0 0 1 9 9"></path>
+              </svg>
+            )}
+            {skill.iconType === 'linux' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+            )}
+            {skill.iconType === 'architecture' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            )}
+          </div>
+
+          <!-- Skill Info -->
+          <div class="skill-info">
+            <h4 class="skill-name">{skill.name}</h4>
+            <span class="skill-category">{skill.category}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(10, 12, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .skill-card:hover {
+    background: rgba(15, 18, 28, 0.95);
+    border-color: var(--skill-color);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 20px -4px var(--skill-glow);
+    transform: translateY(-3px);
+  }
+
+  .skill-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .skill-card:hover .skill-icon-wrap {
+    transform: scale(1.08);
+  }
+
+  .skill-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .skill-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .skill-category {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  .skill-sparkle {
+    color: var(--accent-lime);
+  }
+</style>

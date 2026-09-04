@@ -1,0 +1,323 @@
+---
+// Sección de Proyectos Personales de Software Real
+import { portfolioItems } from '../data/portfolioData';
+
+const proyectos = portfolioItems.filter(item => item.category === 'proyecto');
+---
+
+<section id="proyectos" class="section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="pulse-dot"></span>
+        <span>Proyectos Destacados</span>
+      </div>
+      <h2 class="section-title">
+        Desarrollo de <span class="gradient-text">Software & Aplicaciones</span>
+      </h2>
+      <p class="section-subtitle">
+        Proyectos reales construidos con arquitecturas sólidas, interfaces interactivas y tecnologías modernas.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      {proyectos.map((proyecto) => (
+        <article 
+          class="project-card glass-panel"
+          style={`--proj-color: ${proyecto.color}; --proj-border: ${proyecto.borderColor}; --proj-glow: ${proyecto.glowColor};`}
+        >
+          <!-- Card Header & Category Badge -->
+          <div class="card-top">
+            <div class="category-indicator-badge" style={`color: ${proyecto.color}; border-color: ${proyecto.borderColor}40; background: ${proyecto.color}15;`}>
+              <span class="cat-dot" style={`background: ${proyecto.color}; box-shadow: 0 0 6px ${proyecto.color};`}></span>
+              <span>{proyecto.categoryLabel}</span>
+            </div>
+            
+            <div class="project-icon-box" style={`background: ${proyecto.gradient}; border-color: ${proyecto.borderColor}45;`}>
+              {proyecto.id === 'revenge-gym' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m6.5 6.5 11 11"></path>
+                  <path d="m21 21-1-1a5 5 0 0 0-7.07 0l-.93.93"></path>
+                  <path d="m3 3 1 1a5 5 0 0 0 7.07 0l.93-.93"></path>
+                  <path d="m14 14 1 1a5 5 0 0 0 7.07 0l.93-.93"></path>
+                  <path d="m10 10-1-1a5 5 0 0 0-7.07 0l-.93.93"></path>
+                </svg>
+              )}
+              {proyecto.id === 'taller-miki' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              )}
+              {proyecto.id === 'login-3d-lamborghini' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              )}
+            </div>
+          </div>
+
+          <!-- Project Title & Subtitle -->
+          <div class="card-headings">
+            <h3 class="project-title">{proyecto.title}</h3>
+            <p class="project-subtitle">{proyecto.subtitle}</p>
+          </div>
+
+          <!-- Description -->
+          <p class="project-desc">{proyecto.description}</p>
+
+          <!-- Highlights -->
+          {proyecto.highlights && (
+            <ul class="project-highlights">
+              {proyecto.highlights.slice(0, 2).map(hl => (
+                <li>{hl}</li>
+              ))}
+            </ul>
+          )}
+
+          <!-- Tech Stack Tags -->
+          <div class="tags-container">
+            {proyecto.tags.slice(0, 4).map(tag => (
+              <span class="tech-tag-pill">{tag}</span>
+            ))}
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="card-actions">
+            <button 
+              class="btn-detail-trigger js-open-modal" 
+              data-id={proyecto.id}
+              type="button"
+            >
+              <span>Ver Detalles</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+            {proyecto.link && (
+              <a 
+                href={proyecto.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-github-link"
+                title="Ver código en GitHub"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    border-radius: 22px;
+    background: rgba(10, 12, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--proj-color), transparent);
+    box-shadow: 0 0 12px var(--proj-glow);
+    opacity: 0.8;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--proj-border);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px -6px var(--proj-glow);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .category-indicator-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid;
+  }
+
+  .cat-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .project-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    color: #ffffff;
+  }
+
+  .card-headings {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .project-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .project-desc {
+    font-size: 0.92rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .project-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 4px;
+  }
+
+  .project-highlights li {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    position: relative;
+    padding-left: 16px;
+    line-height: 1.4;
+  }
+
+  .project-highlights li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--proj-color);
+    font-weight: bold;
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 4px;
+  }
+
+  .tech-tag-pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #cbd5e1;
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .btn-detail-trigger {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-detail-trigger:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--proj-border);
+    color: #ffffff;
+    box-shadow: 0 0 15px -3px var(--proj-glow);
+  }
+
+  .btn-github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-github-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent-lime);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent-lime);
+  }
+</style>

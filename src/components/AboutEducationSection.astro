@@ -1,0 +1,370 @@
+---
+// Sección Sobre Mí y Avance Académico en Ingeniería en Sistemas
+import { portfolioItems } from '../data/portfolioData';
+
+const materias = portfolioItems.filter(item => item.category === 'materia');
+---
+
+<section id="sobre-mi" class="section-padding about-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="cyber-pulse">✦</span>
+        <span>Perfil & Formación</span>
+      </div>
+      <h2 class="section-title">
+        Sobre Mí & <span class="gradient-text">Avance Académico</span>
+      </h2>
+      <p class="section-subtitle">
+        Formación universitaria en Ingeniería en Sistemas combinada con aprendizaje continuo y desarrollo práctico.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Left Panel: Sobre Mí -->
+      <div class="about-panel glass-panel">
+        <div class="panel-header">
+          <div class="panel-icon-wrap lime">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div>
+            <h3 class="panel-title">Sobre Mí</h3>
+            <span class="panel-sub">Fernando Siles | Desarrollador de Software</span>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <p>
+            Soy estudiante de <strong>Ingeniería en Sistemas</strong> cursando el <strong>5to Semestre</strong>. Me apasiona el diseño de arquitecturas de software robustas, el desarrollo web full-stack y la creación de interfaces interactivas con simulación y gráficos 3D.
+          </p>
+          <p>
+            Mi objetivo es combinar el rigor lógico y matemático de la ingeniería con la creatividad del desarrollo moderno para construir aplicaciones escalables, eficientes y visualmente atractivas.
+          </p>
+
+          <div class="traits-grid">
+            <div class="trait-card">
+              <span class="trait-icon">⚡</span>
+              <span class="trait-title">Full-Stack Dev</span>
+              <span class="trait-desc">React, Node, TypeScript & Astro</span>
+            </div>
+            <div class="trait-card">
+              <span class="trait-icon">📐</span>
+              <span class="trait-title">Arquitectura</span>
+              <span class="trait-desc">Clean Code, SOLID y Patrones GoF</span>
+            </div>
+            <div class="trait-card">
+              <span class="trait-icon">🪐</span>
+              <span class="trait-title">Interactivas</span>
+              <span class="trait-desc">Three.js, WebGL & Shaders</span>
+            </div>
+            <div class="trait-card">
+              <span class="trait-icon">📊</span>
+              <span class="trait-title">Optimización</span>
+              <span class="trait-desc">Algoritmos e Investigación Operativa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Avance Académico -->
+      <div class="education-panel glass-panel">
+        <div class="panel-header">
+          <div class="panel-icon-wrap violet">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="panel-title">Ingeniería en Sistemas</h3>
+            <span class="panel-sub">Avance Curricular - 5to Semestre</span>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <!-- Academic Progress Bar -->
+          <div class="progress-container">
+            <div class="progress-labels">
+              <span class="progress-title">Progreso de la Carrera</span>
+              <span class="progress-percent">5to Semestre / ~50%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <!-- Featured Subjects -->
+          <div class="subjects-wrapper">
+            <span class="subjects-header-label">Materias Destacadas del Semestre:</span>
+
+            <div class="subjects-list">
+              {materias.map((materia) => (
+                <div 
+                  class="subject-card js-open-modal"
+                  data-id={materia.id}
+                  style={`--mat-color: ${materia.color}; --mat-border: ${materia.borderColor};`}
+                >
+                  <div class="subject-info">
+                    <div class="subject-tag-row">
+                      <span class="mat-badge" style={`color: ${materia.color}; background: ${materia.color}15; border-color: ${materia.borderColor}40;`}>
+                        {materia.categoryLabel}
+                      </span>
+                      <span class="mat-action-hint">Click para ver temario ➔</span>
+                    </div>
+                    <h4 class="subject-name">{materia.title}</h4>
+                    <p class="subject-sub">{materia.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .about-panel, .education-panel {
+    padding: 32px;
+    border-radius: 24px;
+    background: rgba(10, 12, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .panel-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .panel-icon-wrap.lime {
+    background: rgba(232, 249, 130, 0.1);
+    border: 1px solid rgba(232, 249, 130, 0.35);
+    color: #E8F982;
+    box-shadow: 0 0 15px -3px rgba(232, 249, 130, 0.2);
+  }
+
+  .panel-icon-wrap.violet {
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    color: #818cf8;
+    box-shadow: 0 0 15px -3px rgba(129, 140, 248, 0.2);
+  }
+
+  .panel-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .panel-sub {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  .panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .panel-body strong {
+    color: #f1f5f9;
+  }
+
+  /* Traits */
+  .traits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .trait-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trait-icon {
+    font-size: 1.1rem;
+  }
+
+  .trait-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .trait-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Progress */
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px 18px;
+    border-radius: 14px;
+  }
+
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+  }
+
+  .progress-title {
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .progress-percent {
+    font-family: var(--font-mono);
+    color: #E8F982;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #E8F982, #38bdf8, #818cf8);
+    border-radius: 9999px;
+    box-shadow: 0 0 10px rgba(232, 249, 130, 0.4);
+  }
+
+  /* Subjects */
+  .subjects-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .subjects-header-label {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .subject-card {
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .subject-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--mat-border);
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.7);
+  }
+
+  .subject-tag-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .mat-badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+
+  .mat-action-hint {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    transition: color 0.2s;
+  }
+
+  .subject-card:hover .mat-action-hint {
+    color: #E8F982;
+  }
+
+  .subject-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .subject-sub {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .cyber-pulse {
+    color: #E8F982;
+    animation: pulseGamer 2.2s infinite;
+  }
+
+  @keyframes pulseGamer {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.88); }
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,438 @@
+---
+// Sección: Línea de Tiempo Académica & Formación en Ingeniería en Sistemas
+import { timelineMilestones } from '../data/portfolioData';
+---
+
+<section id="trayectoria" class="section-padding timeline-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="timeline-sparkle">✦</span>
+        <span>Trayectoria Universitaria</span>
+      </div>
+      <h2 class="section-title">
+        Línea de Tiempo <span class="gradient-text">Académica & Formación</span>
+      </h2>
+      <p class="section-subtitle">
+        Evolución estructurada a través de las materias clave de Ingeniería en Sistemas, competencias adquiridas y estado actual del 5to Semestre.
+      </p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="timeline-filters">
+      <button class="timeline-filter-btn active" data-filter="all" type="button">
+        <span>✦ Todos los Hitos</span>
+      </button>
+      <button class="timeline-filter-btn" data-filter="actual" type="button">
+        <span class="dot-live"></span>
+        <span>5to Semestre (Actual)</span>
+      </button>
+      <button class="timeline-filter-btn" data-filter="core" type="button">
+        <span>Núcleo & Fundamentos</span>
+      </button>
+      <button class="timeline-filter-btn" data-filter="proyectos" type="button">
+        <span>Proyectos & Stack</span>
+      </button>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline-wrapper">
+      <div class="timeline-vertical-line" aria-hidden="true"></div>
+
+      <div class="timeline-items-list" id="timeline-list">
+        {timelineMilestones.map((item, index) => (
+          <div 
+            class={`timeline-item-card glass-panel ${item.category === 'actual' ? 'current-active' : ''}`}
+            data-category={item.category}
+            style={`--node-color: ${item.color};`}
+          >
+            <!-- Node connector -->
+            <div class="timeline-node">
+              <span class="node-icon">{item.icon}</span>
+              <span class="node-pulse"></span>
+            </div>
+
+            <!-- Content Box -->
+            <div class="milestone-content">
+              <!-- Card Top Info -->
+              <div class="milestone-top">
+                <div class="milestone-badge-group">
+                  <span class="period-pill">{item.semester}</span>
+                  <span class="period-label">{item.periodLabel}</span>
+                </div>
+
+                <div 
+                  class="status-indicator" 
+                  style={`color: ${item.statusColor}; background: ${item.statusColor}18; border-color: ${item.statusColor}40;`}
+                >
+                  <span class="status-dot" style={`background: ${item.statusColor}; box-shadow: 0 0 8px ${item.statusColor};`}></span>
+                  <span>{item.status}</span>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h3 class="milestone-title">{item.title}</h3>
+
+              <!-- Description -->
+              <p class="milestone-desc">{item.description}</p>
+
+              <!-- Competencies / Tags -->
+              <div class="competencies-row">
+                <span class="comp-label">Competencias:</span>
+                <div class="comp-tags">
+                  {item.competencies.map(comp => (
+                    <span class="comp-pill">{comp}</span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action button if associated subject exists -->
+              {item.associatedSubjectId && (
+                <div class="milestone-action">
+                  <button 
+                    class="btn-subject-modal js-open-modal" 
+                    data-id={item.associatedSubjectId}
+                    type="button"
+                  >
+                    <span>Ver Temario & Detalles Completos</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initTimelineFilters() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.timeline-filter-btn');
+    const milestoneCards = document.querySelectorAll<HTMLElement>('.timeline-item-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        milestoneCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 20);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 200);
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimelineFilters);
+  } else {
+    initTimelineFilters();
+  }
+</script>
+
+<style>
+  .timeline-section {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Filters */
+  .timeline-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .timeline-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(232, 249, 130, 0.3);
+  }
+
+  .timeline-filter-btn.active {
+    background: rgba(232, 249, 130, 0.12);
+    border-color: var(--accent-lime);
+    color: #E8F982;
+    box-shadow: 0 0 16px -2px var(--accent-lime-glow);
+  }
+
+  .dot-live {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #E8F982;
+    box-shadow: 0 0 6px #E8F982;
+  }
+
+  /* Timeline Wrapper */
+  .timeline-wrapper {
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px 0 20px;
+  }
+
+  .timeline-vertical-line {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 28px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-lime) 0%, var(--accent-cyan-soft) 40%, var(--accent-violet-soft) 80%, transparent 100%);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .timeline-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .timeline-item-card {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    padding: 24px 28px;
+    margin-left: 58px;
+    border-radius: 20px;
+    background: rgba(10, 12, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .timeline-item-card:hover {
+    border-color: var(--node-color);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px -8px var(--node-color);
+    transform: translateX(4px);
+  }
+
+  .timeline-item-card.current-active {
+    border-color: rgba(232, 249, 130, 0.3);
+    background: linear-gradient(180deg, rgba(14, 18, 26, 0.95) 0%, rgba(8, 10, 15, 0.95) 100%);
+  }
+
+  /* Timeline Node */
+  .timeline-node {
+    position: absolute;
+    left: -58px;
+    top: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #080a10;
+    border: 2px solid var(--node-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 16px -2px var(--node-color);
+    z-index: 3;
+    font-size: 1.05rem;
+  }
+
+  .node-pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--node-color);
+    opacity: 0.4;
+    animation: pulseRing 3s infinite ease-out;
+  }
+
+  /* Content */
+  .milestone-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .milestone-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .milestone-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .period-pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--node-color);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .period-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid;
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .milestone-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .milestone-desc {
+    font-size: 0.92rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* Competencies */
+  .competencies-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 4px;
+  }
+
+  .comp-label {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .comp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .comp-pill {
+    font-size: 0.74rem;
+    font-family: var(--font-mono);
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+  }
+
+  /* Action Button */
+  .milestone-action {
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 4px;
+  }
+
+  .btn-subject-modal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #E8F982;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-subject-modal:hover {
+    background: rgba(232, 249, 130, 0.12);
+    border-color: var(--accent-lime);
+    color: #ffffff;
+    transform: translateX(3px);
+  }
+
+  .timeline-sparkle {
+    color: #E8F982;
+  }
+
+  @keyframes pulseRing {
+    0% { transform: scale(0.95); opacity: 0.6; }
+    50% { transform: scale(1.3); opacity: 0; }
+    100% { transform: scale(0.95); opacity: 0; }
+  }
+
+  @media (max-width: 680px) {
+    .timeline-vertical-line {
+      left: 18px;
+    }
+    .timeline-item-card {
+      margin-left: 36px;
+      padding: 18px 20px;
+    }
+    .timeline-node {
+      left: -44px;
+      width: 32px;
+      height: 32px;
+      font-size: 0.85rem;
+    }
+  }
+</style>

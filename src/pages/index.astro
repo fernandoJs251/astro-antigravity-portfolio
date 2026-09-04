@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroHeader from '../components/HeroHeader.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import AboutEducationSection from '../components/AboutEducationSection.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import AcademicTimelineSection from '../components/AcademicTimelineSection.astro';
+import ContactFooter from '../components/ContactFooter.astro';
+import ItemModal from '../components/ItemModal.astro';
+import CvModal from '../components/CvModal.astro';
+---
+
+<Layout title="Fernando Siles | Estudiante de Ingeniería en Sistemas - 5to Semestre">
+  <!-- Hero Section: Presentación, Título, Acciones -->
+  <HeroHeader />
+
+  <!-- Proyectos Section: Proyectos Reales de Software -->
+  <ProjectsSection />
+
+  <!-- Sobre Mí & Educación: Perfil y Avance de Carrera -->
+  <AboutEducationSection />
+
+  <!-- Habilidades Section: Stack Tecnológico -->
+  <SkillsSection />
+
+  <!-- Línea de Tiempo Académica & Formación -->
+  <AcademicTimelineSection />
+
+  <!-- Contacto & Footer -->
+  <ContactFooter />
+
+  <!-- Modal Interactivo para Detalles de Materias y Proyectos -->
+  <ItemModal />
+
+  <!-- Modal Interactivo de Curriculum Vitae -->
+  <CvModal />
+</Layout>

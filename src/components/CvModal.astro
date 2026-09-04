@@ -1,0 +1,751 @@
+---
+// Modal de Currículum de Fernando Siles
+// Contiene datos profesionales, proyectos, tecnologías y formación académica
+// Totalmente interactivo con botón de cierre (X), clic en backdrop y tecla ESC
+---
+
+<div id="cv-modal" class="cv-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="cv-modal-container glass-panel" id="cv-modal-container-inner">
+    <!-- Header -->
+    <div class="cv-modal-header">
+      <div class="cv-user-badge">
+        <div class="cv-avatar">
+          <span>FS</span>
+          <span class="avatar-dot"></span>
+        </div>
+        <div class="cv-header-text">
+          <span class="cv-pre-tag">Curriculum Vitae</span>
+          <h2 class="cv-name">Fernando <span class="gradient-lime">Siles</span></h2>
+          <p class="cv-role">Estudiante de Ingeniería en Sistemas - 5to Semestre</p>
+        </div>
+      </div>
+
+      <!-- Close Button "X" -->
+      <button id="cv-modal-close-btn" class="close-btn" aria-label="Cerrar modal de currículum" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Quick Contact Row -->
+    <div class="cv-contact-bar">
+      <a href="mailto:fernando.siles@gmail.com" class="cv-contact-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        <span>fernando.siles@gmail.com</span>
+      </a>
+
+      <a href="https://github.com/fernandoJSiles" target="_blank" rel="noopener noreferrer" class="cv-contact-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        <span>@fernandoJSiles</span>
+      </a>
+
+      <span class="cv-status-pill">
+        <span class="live-dot"></span>
+        <span>Disponible</span>
+      </span>
+    </div>
+
+    <!-- Scrollable CV Body -->
+    <div class="cv-body">
+      <!-- 1. Perfil Profesional -->
+      <section class="cv-section">
+        <h3 class="cv-section-title">
+          <span class="cv-title-icon">⚡</span>
+          <span>Perfil Profesional</span>
+        </h3>
+        <p class="cv-text">
+          Estudiante de <strong>5to Semestre de Ingeniería en Sistemas</strong> con sólida base en algoritmos, arquitectura de software y desarrollo web full-stack. Experiencia creando sistemas de gestión completos (SaaS), aplicaciones interactivas 3D y simulaciones de optimización. Apasionado por escribir código limpio, modular (SOLID / Clean Architecture) y de alto rendimiento.
+        </p>
+      </section>
+
+      <!-- 2. Proyectos Destacados -->
+      <section class="cv-section">
+        <h3 class="cv-section-title">
+          <span class="cv-title-icon">🚀</span>
+          <span>Proyectos de Software Destacados</span>
+        </h3>
+
+        <div class="cv-cards-grid">
+          <!-- Proyecto 1 -->
+          <div class="cv-item-card">
+            <div class="cv-card-top">
+              <h4 class="cv-card-title">RevengeGym (Gym System)</h4>
+              <span class="cv-tag orange">Full-Stack SaaS</span>
+            </div>
+            <p class="cv-card-desc">
+              Plataforma para administración integral de gimnasios: control de membresías, validación de acceso por código QR, facturación y generador de rutinas interactivas.
+            </p>
+            <div class="cv-tech-mini">
+              <span>Node.js</span>
+              <span>React</span>
+              <span>Control QR</span>
+              <span>SQL</span>
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div class="cv-item-card">
+            <div class="cv-card-top">
+              <h4 class="cv-card-title">Taller de Miki</h4>
+              <span class="cv-tag lime">ERP Automotriz</span>
+            </div>
+            <p class="cv-card-desc">
+              Software para talleres mecánicos con trazabilidad de historial vehicular, órdenes de trabajo, control de inventario de repuestos y emisión de cotizaciones en PDF.
+            </p>
+            <div class="cv-tech-mini">
+              <span>TypeScript</span>
+              <span>Inventario</span>
+              <span>Reportes PDF</span>
+              <span>Web</span>
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div class="cv-item-card">
+            <div class="cv-card-top">
+              <h4 class="cv-card-title">Login 3D Lamborghini</h4>
+              <span class="cv-tag cyan">3D & WebGL</span>
+            </div>
+            <p class="cv-card-desc">
+              Portal interactivo de autenticación con modelo 3D fotorrealista de Lamborghini, shaders GLSL, iluminación dinámica por cursor y transiciones cinemáticas.
+            </p>
+            <div class="cv-tech-mini">
+              <span>Three.js</span>
+              <span>WebGL</span>
+              <span>Shaders</span>
+              <span>Vite</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Stack Tecnológico -->
+      <section class="cv-section">
+        <h3 class="cv-section-title">
+          <span class="cv-title-icon">🛠️</span>
+          <span>Tecnologías & Competencias</span>
+        </h3>
+
+        <div class="cv-skills-grid">
+          <div class="cv-skill-group">
+            <span class="cv-group-name">Lenguajes de Programación</span>
+            <p class="cv-group-items">Python, TypeScript, JavaScript (ES6+), C / C++, SQL</p>
+          </div>
+
+          <div class="cv-skill-group">
+            <span class="cv-group-name">Frontend & Gráficos 3D</span>
+            <p class="cv-group-items">React, Astro, Three.js, WebGL, Modern CSS, Tailwind</p>
+          </div>
+
+          <div class="cv-skill-group">
+            <span class="cv-group-name">Backend & Bases de Datos</span>
+            <p class="cv-group-items">Node.js, Express, PostgreSQL, MySQL, REST APIs</p>
+          </div>
+
+          <div class="cv-skill-group">
+            <span class="cv-group-name">Sistemas, Arquitectura & Herramientas</span>
+            <p class="cv-group-items">Linux POSIX, Concurrencia/Hilos, Git & GitHub, Clean Architecture, SOLID, Patrones GoF</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Formación Académica -->
+      <section class="cv-section">
+        <h3 class="cv-section-title">
+          <span class="cv-title-icon">🎓</span>
+          <span>Formación Académica & Semestre Actual</span>
+        </h3>
+
+        <div class="cv-edu-card">
+          <div class="cv-edu-header">
+            <div>
+              <h4 class="cv-edu-degree">Ingeniería en Sistemas</h4>
+              <span class="cv-edu-place">Universidad • 5to Semestre en Curso (~50% de la Carrera)</span>
+            </div>
+            <span class="cv-badge-semester">5to Semestre</span>
+          </div>
+
+          <div class="cv-edu-subjects">
+            <span class="cv-subj-label">Materias destacadas de la carrera:</span>
+            <ul class="cv-subj-list">
+              <li><strong>Sistemas Operativos:</strong> Concurrencia, hilos, sincronización (semáforos/mutex), memoria virtual y llamadas al sistema en Linux POSIX.</li>
+              <li><strong>Investigación Operativa II:</strong> Cadenas de Markov, Teoría de colas (M/M/1, M/M/k), Programación dinámica y modelos de optimización estocástica.</li>
+              <li><strong>Análisis y Diseño II:</strong> Clean Architecture, Principios SOLID, Patrones de diseño GoF y diagramación UML avanzada.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="cv-modal-footer">
+      <div class="cv-footer-left">
+        <span class="live-dot"></span>
+        <span>Fernando Siles • Portafolio Web</span>
+      </div>
+
+      <div class="cv-footer-actions">
+        <a 
+          href="https://github.com/fernandoJSiles" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-gamer-primary"
+          style="padding: 9px 18px; font-size: 0.85rem;"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Perfil de GitHub</span>
+        </a>
+
+        <button id="cv-modal-close-action-btn" class="btn-gamer-secondary" type="button" style="padding: 9px 18px; font-size: 0.85rem;">
+          <span>Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCvModal() {
+    const cvBackdrop = document.getElementById('cv-modal');
+    const cvCloseBtn = document.getElementById('cv-modal-close-btn');
+    const cvCloseActionBtn = document.getElementById('cv-modal-close-action-btn');
+
+    if (!cvBackdrop) return;
+
+    function openCvModal() {
+      cvBackdrop.classList.add('open');
+      cvBackdrop.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeCvModal() {
+      cvBackdrop.classList.remove('open');
+      cvBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    // Export open function to window
+    window.openCvModal = openCvModal;
+
+    // 1. Close on "X" button
+    cvCloseBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeCvModal();
+    });
+
+    // 2. Close on bottom action button
+    cvCloseActionBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeCvModal();
+    });
+
+    // 3. Close on backdrop click outside container
+    cvBackdrop.addEventListener('click', (e) => {
+      if (e.target === cvBackdrop) {
+        closeCvModal();
+      }
+    });
+
+    // 4. Close on ESC key press
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && cvBackdrop.classList.contains('open')) {
+        closeCvModal();
+      }
+    });
+
+    // 5. Connect all triggers with class .js-open-cv-modal or attribute data-open-cv or href="#cv"
+    document.querySelectorAll<HTMLElement>('.js-open-cv-modal, [data-open-cv], a[href="#cv"]').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCvModal();
+      });
+    });
+  }
+
+  declare global {
+    interface Window {
+      openCvModal?: () => void;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCvModal);
+  } else {
+    initCvModal();
+  }
+</script>
+
+<style>
+  .cv-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .cv-modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cv-modal-container {
+    width: 100%;
+    max-width: 780px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 26px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(8, 10, 15, 0.97);
+    border: 1px solid rgba(232, 249, 130, 0.35);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px -10px rgba(232, 249, 130, 0.2);
+  }
+
+  .cv-modal-backdrop.open .cv-modal-container {
+    transform: scale(1) translateY(0);
+  }
+
+  .cv-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cv-user-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cv-avatar {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #121622, #182030);
+    border: 1.5px solid rgba(232, 249, 130, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #E8F982;
+    box-shadow: 0 0 15px rgba(232, 249, 130, 0.25);
+  }
+
+  .avatar-dot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 11px;
+    height: 11px;
+    background: #E8F982;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    box-shadow: 0 0 8px #E8F982;
+  }
+
+  .cv-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cv-pre-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #E8F982;
+  }
+
+  .cv-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .cv-role {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .close-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .close-btn:hover {
+    background: rgba(232, 249, 130, 0.15);
+    border-color: var(--accent-lime);
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.05);
+    box-shadow: 0 0 12px rgba(232, 249, 130, 0.3);
+  }
+
+  /* Contact Chips */
+  .cv-contact-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cv-contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cv-contact-chip:hover {
+    color: #ffffff;
+    border-color: rgba(232, 249, 130, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .cv-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: #E8F982;
+    margin-left: auto;
+  }
+
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #E8F982;
+    box-shadow: 0 0 6px #E8F982;
+  }
+
+  /* Body */
+  .cv-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .cv-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cv-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 6px;
+  }
+
+  .cv-title-icon {
+    font-size: 1rem;
+  }
+
+  .cv-text {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    line-height: 1.65;
+  }
+
+  .cv-text strong {
+    color: #ffffff;
+  }
+
+  /* Projects grid */
+  .cv-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+  }
+
+  .cv-item-card {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cv-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .cv-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .cv-tag {
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .cv-tag.orange {
+    background: rgba(251, 146, 60, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(251, 146, 60, 0.3);
+  }
+
+  .cv-tag.lime {
+    background: rgba(232, 249, 130, 0.15);
+    color: #E8F982;
+    border: 1px solid rgba(232, 249, 130, 0.3);
+  }
+
+  .cv-tag.cyan {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .cv-card-desc {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  .cv-tech-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .cv-tech-mini span {
+    font-size: 0.68rem;
+    font-family: var(--font-mono);
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Skills Grid */
+  .cv-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .cv-skill-group {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cv-group-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #E8F982;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .cv-group-items {
+    font-size: 0.84rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+  }
+
+  /* Education */
+  .cv-edu-card {
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cv-edu-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .cv-edu-degree {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .cv-edu-place {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .cv-badge-semester {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(129, 140, 248, 0.15);
+    color: #818cf8;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+  }
+
+  .cv-edu-subjects {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .cv-subj-label {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .cv-subj-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cv-subj-list li {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    position: relative;
+    padding-left: 16px;
+    line-height: 1.45;
+  }
+
+  .cv-subj-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: bold;
+  }
+
+  .cv-subj-list strong {
+    color: #f1f5f9;
+  }
+
+  /* Modal Footer */
+  .cv-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .cv-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+  }
+
+  .cv-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .cv-modal-container {
+      padding: 20px;
+    }
+    .cv-skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .cv-status-pill {
+      margin-left: 0;
+    }
+    .cv-modal-footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cv-footer-actions {
+      justify-content: stretch;
+    }
+    .cv-footer-actions > * {
+      flex: 1;
+      text-align: center;
+    }
+  }
+</style>

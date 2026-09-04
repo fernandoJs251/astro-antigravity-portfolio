@@ -1,0 +1,495 @@
+---
+// Componente de modal para visualizar detalles de materias o proyectos
+// Incluye controladores 100% funcionales para el botón de cierre (X), clic en backdrop y tecla ESC
+---
+
+<div id="portfolio-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-container glass-panel" id="modal-container-inner">
+    <!-- Header with badge and close button -->
+    <div class="modal-header">
+      <div class="header-tags">
+        <span id="modal-category-badge" class="category-pill">Categoría</span>
+        <span id="modal-id-badge" class="mono-badge">ID</span>
+      </div>
+      
+      <!-- Close Button "X" -->
+      <button id="modal-close-btn" class="close-btn" aria-label="Cerrar modal" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Title and Subtitle -->
+    <div class="modal-title-section">
+      <h2 id="modal-title" class="modal-title">Título del Elemento</h2>
+      <p id="modal-subtitle" class="modal-subtitle">Subtítulo o rol descriptivo</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="modal-body">
+      <!-- Description -->
+      <div class="info-block">
+        <h4 class="block-label">Descripción</h4>
+        <p id="modal-long-desc" class="block-text">Descripción detallada...</p>
+      </div>
+
+      <!-- Quick Stats / Metrics Grid -->
+      <div id="modal-stats-grid" class="stats-grid">
+        <!-- Injected dynamically via JS -->
+      </div>
+
+      <!-- Key Highlights / Temario -->
+      <div id="modal-highlights-container" class="info-block">
+        <h4 id="modal-highlights-title" class="block-label">Aspectos Clave / Temario</h4>
+        <ul id="modal-highlights-list" class="highlights-list">
+          <!-- Injected dynamically via JS -->
+        </ul>
+      </div>
+
+      <!-- Tech Stack / Tags -->
+      <div class="info-block">
+        <h4 class="block-label">Tecnologías / Competencias</h4>
+        <div id="modal-tags-container" class="tags-flex">
+          <!-- Injected dynamically via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="modal-footer">
+      <div class="footer-note">
+        <span class="pulse-dot"></span>
+        <span>Haz clic en la <strong>X</strong>, fuera o presiona <kbd>ESC</kbd> para cerrar</span>
+      </div>
+      <div id="modal-actions" class="modal-actions">
+        <!-- Links or extra buttons if available -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { portfolioItems } from '../data/portfolioData';
+
+  function initItemModal() {
+    const modalBackdrop = document.getElementById('portfolio-modal');
+    const modalContainer = document.getElementById('modal-container-inner');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    const modalTitle = document.getElementById('modal-title');
+    const modalSubtitle = document.getElementById('modal-subtitle');
+    const modalCatBadge = document.getElementById('modal-category-badge');
+    const modalIdBadge = document.getElementById('modal-id-badge');
+    const modalLongDesc = document.getElementById('modal-long-desc');
+    const modalStatsGrid = document.getElementById('modal-stats-grid');
+    const modalHighlightsContainer = document.getElementById('modal-highlights-container');
+    const modalHighlightsList = document.getElementById('modal-highlights-list');
+    const modalTagsContainer = document.getElementById('modal-tags-container');
+    const modalActions = document.getElementById('modal-actions');
+
+    if (!modalBackdrop || !closeBtn) return;
+
+    // Open function
+    window.openPortfolioModal = function(id: string) {
+      const data = portfolioItems.find(p => p.id === id);
+      if (!data) return;
+
+      if (modalTitle) modalTitle.innerText = data.title;
+      if (modalSubtitle) modalSubtitle.innerText = data.subtitle;
+      
+      if (modalCatBadge) {
+        modalCatBadge.innerText = data.categoryLabel;
+        modalCatBadge.style.color = data.color;
+        modalCatBadge.style.backgroundColor = `${data.color}20`;
+        modalCatBadge.style.borderColor = `${data.color}45`;
+      }
+      
+      if (modalIdBadge) modalIdBadge.innerText = `@${data.id}`;
+      if (modalLongDesc) modalLongDesc.innerText = data.longDescription || data.description;
+
+      if (modalStatsGrid) {
+        modalStatsGrid.innerHTML = '';
+        if (data.stats && data.stats.length > 0) {
+          modalStatsGrid.style.display = 'grid';
+          data.stats.forEach(st => {
+            const card = document.createElement('div');
+            card.className = 'stat-card';
+            card.innerHTML = `
+              <span class="stat-label">${st.label}</span>
+              <span class="stat-val">${st.value}</span>
+            `;
+            modalStatsGrid.appendChild(card);
+          });
+        } else {
+          modalStatsGrid.style.display = 'none';
+        }
+      }
+
+      if (modalHighlightsList && modalHighlightsContainer) {
+        modalHighlightsList.innerHTML = '';
+        if (data.highlights && data.highlights.length > 0) {
+          modalHighlightsContainer.style.display = 'flex';
+          data.highlights.forEach(hl => {
+            const li = document.createElement('li');
+            li.innerText = hl;
+            modalHighlightsList.appendChild(li);
+          });
+        } else {
+          modalHighlightsContainer.style.display = 'none';
+        }
+      }
+
+      if (modalTagsContainer) {
+        modalTagsContainer.innerHTML = '';
+        if (data.tags && data.tags.length > 0) {
+          data.tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'tech-tag';
+            span.innerText = tag;
+            modalTagsContainer.appendChild(span);
+          });
+        }
+      }
+
+      if (modalActions) {
+        modalActions.innerHTML = '';
+        if (data.link) {
+          const a = document.createElement('a');
+          a.href = data.link;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'btn-gamer-primary';
+          a.style.textDecoration = 'none';
+          a.style.padding = '8px 16px';
+          a.style.fontSize = '0.84rem';
+          a.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>Ver Repositorio</span>
+          `;
+          modalActions.appendChild(a);
+        }
+      }
+
+      modalBackdrop.classList.add('open');
+      modalBackdrop.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    };
+
+    // Close function
+    function closeModal() {
+      modalBackdrop.classList.remove('open');
+      modalBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    // 1. Close on "X" button click
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+
+    // 2. Close on backdrop click outside container
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    // 3. Close on ESC key press
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // 4. Attach click listeners to all .js-open-modal triggers
+    document.querySelectorAll<HTMLElement>('.js-open-modal').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-id');
+        if (id && window.openPortfolioModal) {
+          window.openPortfolioModal(id);
+        }
+      });
+    });
+  }
+
+  // Declare global augmentation
+  declare global {
+    interface Window {
+      openPortfolioModal?: (id: string) => void;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initItemModal);
+  } else {
+    initItemModal();
+  }
+</script>
+
+<style>
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-container {
+    width: 100%;
+    max-width: 640px;
+    max-height: 88vh;
+    overflow-y: auto;
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(8, 10, 15, 0.96);
+    border: 1px solid rgba(232, 249, 130, 0.3);
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), 0 0 35px -10px rgba(232, 249, 130, 0.15);
+  }
+
+  .modal-backdrop.open .modal-container {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-tags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .category-pill {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+    border: 1px solid;
+  }
+
+  .mono-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .close-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .close-btn:hover {
+    background: rgba(232, 249, 130, 0.15);
+    border-color: var(--accent-lime);
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.05);
+    box-shadow: 0 0 12px rgba(232, 249, 130, 0.3);
+  }
+
+  .modal-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .modal-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .modal-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .block-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .block-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #cbd5e1;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 4px 0;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .stat-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+
+  .highlights-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .highlights-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  .highlights-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-lime);
+    font-weight: bold;
+  }
+
+  .tags-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    padding: 5px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-note strong {
+    color: #e2e8f0;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-lime);
+    box-shadow: 0 0 8px var(--accent-lime);
+    animation: pulseDot 2s infinite;
+  }
+
+  kbd {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+</style>

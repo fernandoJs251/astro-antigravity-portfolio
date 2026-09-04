@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Fernando Siles | Portafolio - Estudiante de Ingeniería en Sistemas",
+  description = "Portafolio web de Fernando Siles. Estudiante de Ingeniería en Sistemas (5to Semestre) y Desarrollador Full-Stack."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+  </head>
+  <body>
+    <!-- Ambient Diffused Light Orbs Background over Pure Black -->
+    <div class="ambient-aurora-bg" aria-hidden="true">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
+      <div class="aurora-orb orb-4"></div>
+      <div class="aurora-orb orb-5"></div>
+    </div>
+
+    <!-- Fixed Glassmorphic Navbar -->
+    <Navbar />
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,414 @@
+---
+// Sección Hero Principal - Presentación de Fernando Siles
+---
+
+<section id="inicio" class="hero-section">
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Left Column: Bio & Calls to Action -->
+      <div class="hero-text-content">
+        <!-- Small Greeting Tag -->
+        <div class="greeting-badge">
+          <span class="pulse-indicator"></span>
+          <span class="greeting-text">Hola, bienvenido a mi portafolio</span>
+        </div>
+
+        <!-- Name (Refined & Proportional) -->
+        <div class="name-block">
+          <h1 class="hero-name">
+            Fernando <span class="gradient-text">Siles</span>
+          </h1>
+          <p class="hero-title">
+            <span class="title-highlight">Estudiante de Ingeniería en Sistemas</span>
+            <span class="semester-pill">5to Semestre</span>
+          </p>
+        </div>
+
+        <!-- Short Description -->
+        <p class="hero-description">
+          Apasionado por el <strong>desarrollo web full-stack</strong>, la <strong>arquitectura de software</strong> y las <strong>simulaciones interactivas</strong>. Enfocado en construir experiencias digitales escalables, limpias y de alto rendimiento.
+        </p>
+
+        <!-- Main Action Buttons -->
+        <div class="hero-cta-buttons">
+          <a href="#proyectos" class="btn-gamer-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>Mis Proyectos</span>
+          </a>
+
+          <!-- Button triggering the CV Modal -->
+          <button type="button" class="btn-gamer-secondary js-open-cv-modal" data-open-cv aria-label="Abrir Curriculum Vitae">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Curriculum</span>
+          </button>
+        </div>
+
+        <!-- Social Channels & Quick Info -->
+        <div class="social-channels">
+          <span class="social-label">Encuéntrame en:</span>
+          
+          <div class="social-icons-group">
+            <a 
+              href="https://github.com/fernandoJSiles" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="social-pill-btn"
+              title="GitHub"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <a 
+              href="https://linkedin.com/in/fernando-siles" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="social-pill-btn"
+              title="LinkedIn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.89 0-1.61.72-1.61 1.61s.72 1.61 1.61 1.61 1.61-.72 1.61-1.61-.72-1.61-1.61-1.61Z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a 
+              href="mailto:fernando.siles@gmail.com" 
+              class="social-pill-btn"
+              title="Contacto por Correo"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Clean, Minimalist Profile Placeholder with Aura Gradient -->
+      <div class="hero-image-wrapper">
+        <div class="photo-placeholder-card">
+          <!-- Subtle Aura Ambient Glow -->
+          <div class="aura-glow-background"></div>
+
+          <!-- Empty Clean Container Frame for Real Photo -->
+          <div class="photo-frame-inner">
+            <div class="aura-center-orb"></div>
+          </div>
+
+          <!-- Bottom Status Label -->
+          <div class="avatar-footer">
+            <div class="status-live">
+              <span class="dot-live"></span>
+              <span>Disponible para Proyectos</span>
+            </div>
+            <span class="photo-hint">Foto de Perfil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding: 130px 0 80px;
+    z-index: 2;
+  }
+
+  .hero-container {
+    max-width: 1160px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  /* Left Column */
+  .hero-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .greeting-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    background: rgba(232, 249, 130, 0.08);
+    border: 1px solid rgba(232, 249, 130, 0.25);
+    border-radius: 9999px;
+    width: fit-content;
+  }
+
+  .pulse-indicator {
+    width: 8px;
+    height: 8px;
+    background: #E8F982;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #E8F982;
+    animation: pulseSoft 2.2s infinite;
+  }
+
+  .greeting-text {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #E8F982;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-name {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+  }
+
+  .hero-title {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .title-highlight {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  .semester-pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(232, 249, 130, 0.1);
+    color: #E8F982;
+    border: 1px solid rgba(232, 249, 130, 0.3);
+  }
+
+  .hero-description {
+    font-size: 1.02rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .hero-description strong {
+    color: #f1f5f9;
+    font-weight: 600;
+  }
+
+  .hero-cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-top: 6px;
+  }
+
+  .social-channels {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .social-label {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  .social-icons-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .social-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(232, 249, 130, 0.35);
+    transform: translateY(-2px);
+  }
+
+  /* Right Column: Clean Minimalist Placeholder Card */
+  .hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .photo-placeholder-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(180deg, rgba(14, 16, 22, 0.92) 0%, rgba(6, 8, 12, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(232, 249, 130, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .photo-placeholder-card:hover {
+    border-color: rgba(232, 249, 130, 0.3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px -5px rgba(232, 249, 130, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .aura-glow-background {
+    position: absolute;
+    inset: -1px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(232, 249, 130, 0.15) 0%, rgba(56, 189, 248, 0.12) 50%, rgba(129, 140, 248, 0.15) 100%);
+    z-index: -1;
+    filter: blur(16px);
+    opacity: 0.5;
+  }
+
+  /* Clean Empty Inner Frame */
+  .photo-frame-inner {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background: 
+      radial-gradient(circle at 50% 45%, rgba(232, 249, 130, 0.06) 0%, rgba(56, 189, 248, 0.04) 40%, rgba(8, 10, 16, 0.95) 80%);
+    border: 1.5px dashed rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .photo-placeholder-card:hover .photo-frame-inner {
+    border-color: rgba(232, 249, 130, 0.35);
+  }
+
+  .aura-center-orb {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 249, 130, 0.12) 0%, rgba(129, 140, 248, 0.08) 50%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .avatar-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
+  }
+
+  .status-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    color: #E8F982;
+  }
+
+  .dot-live {
+    width: 7px;
+    height: 7px;
+    background: #E8F982;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #E8F982;
+  }
+
+  .photo-hint {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.88); }
+  }
+
+  @media (max-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text-content {
+      align-items: center;
+    }
+
+    .hero-cta-buttons {
+      justify-content: center;
+    }
+
+    .social-channels {
+      justify-content: center;
+    }
+
+    .hero-name {
+      font-size: 2.3rem;
+    }
+
+    .hero-title {
+      justify-content: center;
+    }
+  }
+</style>
